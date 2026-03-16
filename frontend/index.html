@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFHL Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/styles.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <p class="eyebrow">AntiBajaj API Client</p>
+            <h1>Run your BFHL endpoint from a clean frontend.</h1>
+            <p class="hero-copy">
+                Test Fibonacci, prime filtering, HCF, LCM, and one-word AI responses from one place.
+            </p>
+            <div class="hero-pills">
+                <span>Express backend</span>
+                <span>Live payload preview</span>
+                <span>Same-origin ready</span>
+            </div>
+        </section>
+
+        <section class="panel">
+            <form id="bfhl-form" class="form-card">
+                <div class="field">
+                    <label for="operation">Operation</label>
+                    <select id="operation" name="operation">
+                        <option value="fibonacci">Fibonacci</option>
+                        <option value="prime">Prime Filter</option>
+                        <option value="hcf">HCF</option>
+                        <option value="lcm">LCM</option>
+                        <option value="AI">AI One Word</option>
+                    </select>
+                </div>
+
+                <div class="field" id="single-input-group">
+                    <label for="single-input">Positive integer</label>
+                    <input id="single-input" name="single-input" type="number" min="1" value="7" />
+                </div>
+
+                <div class="field hidden" id="array-input-group">
+                    <label for="array-input">Comma-separated integers</label>
+                    <input id="array-input" name="array-input" type="text" value="2, 3, 4, 5, 6, 7" />
+                </div>
+
+                <div class="field hidden" id="text-input-group">
+                    <label for="text-input">Short question</label>
+                    <textarea id="text-input" name="text-input" rows="4" maxlength="200" placeholder="For example: What color is the sky?"></textarea>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" id="submit-btn">Send Request</button>
+                    <button type="button" id="fill-sample-btn" class="secondary-btn">Use Sample</button>
+                </div>
+
+                <p class="helper" id="helper-text">Fibonacci expects one positive integer.</p>
+            </form>
+
+            <aside class="output-stack">
+                <article class="output-card">
+                    <div class="output-head">
+                        <h2>Payload</h2>
+                        <span>POST /bfhl</span>
+                    </div>
+                    <pre id="payload-preview">{}</pre>
+                </article>
+
+                <article class="output-card">
+                    <div class="output-head">
+                        <h2>Response</h2>
+                        <span id="status-badge">Idle</span>
+                    </div>
+                    <pre id="response-preview">Submit a request to see the API response.</pre>
+                </article>
+            </aside>
+        </section>
+    </main>
+
+    <script src="/frontend/app.js"></script>
+</body>
+</html>

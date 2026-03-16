@@ -1,0 +1,227 @@
+:root {
+    --bg: #f4efe6;
+    --panel: rgba(255, 250, 242, 0.88);
+    --panel-strong: #fffaf2;
+    --text: #1e1a16;
+    --muted: #6d6258;
+    --accent: #c45c2d;
+    --accent-dark: #89381a;
+    --border: rgba(30, 26, 22, 0.12);
+    --shadow: 0 24px 60px rgba(82, 53, 31, 0.14);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(196, 92, 45, 0.26), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(51, 115, 87, 0.2), transparent 24%),
+        linear-gradient(135deg, #f7f1e8 0%, #efe2d0 100%);
+}
+
+.app-shell {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 48px 0 56px;
+}
+
+.hero {
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    color: var(--accent-dark);
+    font-size: 0.84rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin: 0;
+    max-width: 720px;
+    font-size: clamp(2.6rem, 5vw, 4.6rem);
+    line-height: 0.95;
+}
+
+.hero-copy {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.hero-pills span {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.56);
+    backdrop-filter: blur(10px);
+}
+
+.panel {
+    display: grid;
+    grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.form-card,
+.output-card {
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: var(--panel);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow);
+}
+
+.form-card {
+    padding: 24px;
+}
+
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.field input,
+.field select,
+.field textarea,
+.actions button {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    font: inherit;
+}
+
+.field input,
+.field select,
+.field textarea {
+    background: var(--panel-strong);
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.actions button {
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.actions button:hover {
+    transform: translateY(-1px);
+}
+
+#submit-btn {
+    border: none;
+    color: #fff7ef;
+    background: linear-gradient(135deg, var(--accent) 0%, #9f3d16 100%);
+    box-shadow: 0 16px 28px rgba(159, 61, 22, 0.24);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text);
+}
+
+.helper {
+    margin: 16px 0 0;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.output-stack {
+    display: grid;
+    gap: 20px;
+}
+
+.output-card {
+    padding: 22px;
+    min-height: 240px;
+}
+
+.output-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.output-head h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.output-head span {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #211a14;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .panel {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        line-height: 1.02;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-shell {
+        width: min(100% - 20px, 1120px);
+        padding-top: 26px;
+    }
+
+    .actions {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card,
+    .output-card {
+        border-radius: 22px;
+    }
+}

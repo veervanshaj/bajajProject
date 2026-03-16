@@ -1,6 +1,8 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.js" }
+    { "source": "/bfhl", "destination": "/backend/index.js" },
+    { "source": "/health", "destination": "/backend/index.js" },
+    { "source": "/", "destination": "/frontend/index.html" }
   ]
 }

@@ -1,10 +1,7 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { getFibonacci, isPrime, getHCF, getLCM } = require('../utils/mathUtils');
-require('dotenv').config();
 
 const email = "veer2320.be23@chitkara.edu.in";
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 exports.handleBfhl = async (req, res) => {
     try {
@@ -105,6 +102,16 @@ exports.handleBfhl = async (req, res) => {
                 }
 
                 try {
+                    if (!process.env.GOOGLE_API_KEY) {
+                        return res.status(500).json({
+                            is_success: false,
+                            official_email: email,
+                            message: "GOOGLE_API_KEY is missing in environment"
+                        });
+                    }
+
+                    const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+                    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
                     const prompt = `Answer with exactly one word only. No punctuation. Question: ${question}`;
                     const result = await model.generateContent(prompt);
 
@@ -119,7 +126,7 @@ exports.handleBfhl = async (req, res) => {
                     return res.status(500).json({
                         is_success: false,
                         official_email: email,
-                        message: "AI service failure"
+                        message: "AI service failure. Check whether GOOGLE_API_KEY is valid and enabled for Gemini API."
                     });
                 }
                 break;
